@@ -37,7 +37,7 @@ function Names(props) {
           return (
             <div
               key={name._id}
-              className="w-full p-4 text-center inline"
+              className="w-full p-4 text-center bg-red-50 shadow-2xl m-4 border-2 rounded-lg"
             >
             <div><b>{name.primaryName}</b></div>
             <div>{replacedProfession}</div>
@@ -47,7 +47,9 @@ function Names(props) {
             </div>
           );
         })}
-        <button onClick={() => getNames()}>Refetch!</button>
+       <div className="text-center mt-6">
+       <button className="bg-green-500 border-2 rounded-lg py-3 mt-2 mx-2 px-6 font-bold text-white" onClick={() => getNames()}>Fetch!</button>
+       </div>
     </div>
   );
 }
