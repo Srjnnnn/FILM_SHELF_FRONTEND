@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom';
 import './tailwind.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from 'apollo-client';
-import { createHttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+
 
 
 const link = createHttpLink({
