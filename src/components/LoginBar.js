@@ -1,47 +1,14 @@
-import React from "react";
-import { gql, useLazyQuery, useMutation } from "@apollo/client";
+import React, { useState, useEffect } from "react";
+import { useLazyQuery, useMutation } from "@apollo/client";
+import { GET_USER, CREATE_USER, LOGIN_USER } from '../constants/Constants';
+import { getFromLocalStorage, setToLocalStorage } from '../Helpers/LocalStorage';
 
-const GET_USER = gql`
-  query user($email: String!) {
-    user(email: $email) {
-      _id
-      isLoggedIn
-      sessionKeys
-      password
-      createdAt
-      updatedAt
-      email
-    }
-  }
-`;
 
-const LOGIN_USER = gql`
-  query login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      userMail
-      isLoggedIn
-      sessionKey
-    }
-  }
-`;
-
-const CREATE_USER = gql`
-  mutation createUser($email: String!, $password: String!) {
-    createUser(input: { email: $email, password: $password }) {
-      isLoggedIn
-      sessionKeys
-      email
-      _id
-      password
-      createdAt
-      updatedAt
-    }
-  }
-`;
 
 function LoginBar(props) {
   const passwordVariable = props.result[1];
   const emailVariable = props.result[0];
+  const [sessionKeyState, setSessionKeyState] = useState({sessionKeyVar: '', isLoggedInState: false})
 
   const [
     checkUser,
@@ -56,7 +23,10 @@ function LoginBar(props) {
     { loading: checkLogLoading, error: checkLogError, data: logData },
   ] = useLazyQuery(LOGIN_USER, {
     variables: { email: emailVariable, password: passwordVariable },
-    onCompleted: () => checkUser(),
+    onCompleted: (data) => {
+      (data?.login && data?.login.sessionKey) && setToLocalStorage(data.login.sessionKey, data.login.userMail);
+      checkLoginStatus();
+    },
   });
 
   const [
@@ -72,7 +42,32 @@ function LoginBar(props) {
       { query: GET_USER, variables: { email: emailVariable } },
     ],
     awaitRefetchQueries: true,
+    onCompleted: () => {
+      setToLocalStorage(logData.login.sessionKey, logData.login.userMail);
+      checkLoginStatus();
+    }
   });
+
+  const checkLoginStatus = () => {
+    const sessionVariable = getFromLocalStorage('filmShelfSessionKey')
+    if (sessionVariable) { 
+      setSessionKeyState({sessionKeyVar: sessionVariable['sessionKey'], isLoggedInState: true })
+      return (
+        sessionVariable
+      )
+     }
+  }
+
+  const status = sessionKeyState['isLoggedInState']
+
+  useEffect(() => {
+    const trigger = checkLoginStatus()
+    let sessionKey = null
+    if (trigger) {
+      sessionKey = trigger['sessionKey']
+    }
+    sessionKey ? setSessionKeyState({sessionKeyVar: sessionKey, isLoggedInState: true}) : setSessionKeyState({sessionKeyVar: '', isLoggedInState: false});
+  }, [status]);
 
   if (checkUserLoading || checkLogLoading || checkCreateLoading)
     return (
@@ -143,11 +138,13 @@ function LoginBar(props) {
       </div>
     );
 
-  if (userData && userData?.user && logData && logData?.login.isLoggedIn) {
+  if (sessionKeyState.isLoggedInState) {
+    const sessionVariable = getFromLocalStorage('filmShelfSessionKey')
+    const email = sessionVariable['email']
     return (
       <div className="text-center">
         <h2 className="text-center font-serif font-extrabold text-xl">
-          Welcome {userData.user.email}
+          Welcome {email}
         </h2>
         <button className="bg-red-500 border-2 rounded-lg py-3 mt-2 mx-2 px-6 font-bold text-white">
           Log Out

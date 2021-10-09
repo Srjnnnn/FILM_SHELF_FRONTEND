@@ -1,17 +1,6 @@
 import React from "react";
-import { gql, useLazyQuery } from "@apollo/client";
-
-const GET_NAMES = gql`
-  query names($primaryName: String!) {
-    names(primaryName: $primaryName) {
-        primaryName
-        primaryProfession
-        knownForTitles
-        birthYear
-        deathYear
-    }
-  }
-`;
+import { useLazyQuery } from "@apollo/client";
+import { GET_NAMES } from '../constants/Constants'
 
 function Names(props) {
   const [getNames, { loading, error, data }] = useLazyQuery(

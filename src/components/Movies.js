@@ -1,22 +1,6 @@
 import React from "react";
-import { gql, useLazyQuery } from "@apollo/client";
-
-const GET_MOVIES = gql`
-  query titles($originalTitle: String!) {
-    titles(originalTitle: $originalTitle) {
-      originalTitle
-      _id
-      tconst
-      primaryTitle
-      titleType
-      isAdult
-      startYear
-      endYear
-      runtimeMinutes
-      genres
-    }
-  }
-`;
+import { useLazyQuery } from "@apollo/client";
+import { GET_MOVIES } from '../constants/Constants';
 
 function Movies(props) {
   const [getMovies, { loading, error, data }] = useLazyQuery(
