@@ -19,11 +19,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="text-center font-serif font-extrabold text-3xl mt-4">Welcome to Film Shelf</h1>
-      <div className="mt-14 py-4 shadow-2xl bg-green-50 mx-4 border-2 rounded-lg">
+      <h1 className="text-center font-serif font-extrabold text-3xl pt-4">Welcome to Film Shelf</h1>
+      <div className="mt-14 py-4 shadow-2xl bg-green-50 mx-4 border-2 rounded-lg w-1/2 mx-auto">
         <LoginBar placeholder={['email', 'password']} result={[loginEmailResult, loginPasswordResult]} loginChange={handleChange} name={['email', 'password']}/>
       </div>
-      <div className="grid grid-cols-2 mt-14 py-4 shadow-2xl bg-blue-50 mx-4 border-2 rounded-lg">
+      <div className="grid grid-cols-2 mt-14 py-6 shadow-2xl bg-blue-50 mx-auto border-2 rounded-lg w-4/5">
         <SearchBar
           placeholder="Search for movies"
           result={searchMovieResult}
