@@ -32243,6 +32243,10 @@ video {
   content: none;
 }
 
+h1 {
+  text-shadow: 5px, 5px, 5px, 0;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

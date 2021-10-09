@@ -4,6 +4,7 @@ import './tailwind.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import './index.css';
 
 
 

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const WelcomeComponent = (email, logOutUser) => (
   <div className="text-center">
-    <h2 className="text-center font-serif font-extrabold text-xl">
+    <h2 className="text-center font-serif font-extrabold text-xl hover:text-red-500">
       <Link to='/User'>Welcome {email}</Link>
     </h2>
     <button

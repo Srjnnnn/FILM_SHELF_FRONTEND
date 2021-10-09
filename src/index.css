@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.App > h1 {
+    text-shadow: 0 0 3px #FF0000;
+}
+
+.custom {
+    text-shadow: 2px 2px 4px #000000;
+}
+
+button:hover {
+    transform: translateY(4px);
+}

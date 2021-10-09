@@ -8,7 +8,7 @@ export const UpdateComponent = (
   updateUser
 ) => (
   <div className="text-center mt-10">
-    <h1 className="text-center font-serif font-extrabold text-3xl pt-4 bg-green-100 shadow-2xl w-min mx-auto text-red-400 border-2 rounded-lg p-10">
+    <h1 className="text-center font-serif font-extrabold text-3xl pt-4 bg-green-100 shadow-2xl w-min mx-auto text-red-400 border-2 rounded-lg p-10 custom">
       {userData.user.email}
     </h1>
     <div className="mt-10">
