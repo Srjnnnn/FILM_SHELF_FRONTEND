@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Movies from "./components/Movies";
-import SearchBar from "./components/SearchBar";
-import Names from './components/Names';
-import LoginBar from './components/LoginBar';
+import Movies from "./containers/Movies";
+import SearchBar from "./containers/SearchBar";
+import Names from './containers/Names';
+import LoginBar from './containers/LoginBar';
 
 function App() {
   const [searchMovieResult, setSearchMovieResult] = useState('');
