@@ -9,6 +9,7 @@ function SearchBar(props) {
             placeholder={props.placeholder}
             onChange={props.searchChange}
             name={props.name}
+            type={props.type}
         />
     )
 };

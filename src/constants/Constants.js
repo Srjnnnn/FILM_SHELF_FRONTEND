@@ -24,6 +24,21 @@ query login($email: String!, $password: String!) {
 }
 `;
 
+export const UPDATE_USER = gql`
+query update_password($newPassword: String!, $sessionKey: String!) {
+  updatePassword(newPassword: $newPassword, sessionKey: $sessionKey) {
+    _id
+    isLoggedIn
+    sessionKeys
+    password
+    createdAt
+    updatedAt
+    email
+  }
+}
+`;
+
+
 export const LOGOUT_USER = gql`
 query log_out($email: String!, $sessionKey: String!) {
   logOut(email: $email, sessionKey: $sessionKey) {
