@@ -91,10 +91,11 @@ function LoginBar(props) {
     } else {
       setSessionKeyState({ sessionKeyVar: "", isLoggedInState: false });
     }
+    props.callBackFromParent(sessionKeyState.isLoggedInState)
     return sessionVariable;
   };
 
-  const status = sessionKeyState["isLoggedInState"];
+  const status = sessionKeyState.isLoggedInState;
 
   useEffect(() => {
     const trigger = checkLoginStatus();

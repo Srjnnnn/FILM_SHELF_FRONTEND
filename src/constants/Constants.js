@@ -10,6 +10,9 @@ query user($email: String!) {
     createdAt
     updatedAt
     email
+    favoriteActors
+    favoriteMovies
+    followedGenres
   }
 }
 `;
@@ -56,6 +59,20 @@ query log_out($email: String!, $sessionKey: String!) {
 export const CREATE_USER = gql`
 mutation createUser($email: String!, $password: String!) {
   createUser(input: { email: $email, password: $password }) {
+    isLoggedIn
+    sessionKeys
+    email
+    _id
+    password
+    createdAt
+    updatedAt
+  }
+}
+`;
+
+export const ADD_TO_FAV = gql`
+mutation addToFavorites($email: String!, $useCase: String!, $result: String!, $sessionKey: String!) {
+  addToFavorites(input: { email: $email, useCase: $useCase, result: $result, sessionKey: $sessionKey }) {
     isLoggedIn
     sessionKeys
     email

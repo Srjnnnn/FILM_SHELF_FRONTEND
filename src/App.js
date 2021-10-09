@@ -4,6 +4,7 @@ import { MainAppComponent } from "./components/MainAppComponent";
 import UserDetails from "./containers/UserDetailsPage";
 
 function App() {
+  
   return (
     <BrowserRouter>
       <Switch>
