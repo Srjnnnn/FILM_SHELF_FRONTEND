@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { GET_USER, CREATE_USER, LOGIN_USER } from '../constants/Constants';
+import { GET_USER, CREATE_USER, LOGIN_USER, LOGOUT_USER } from '../constants/Constants';
 import { getFromLocalStorage, setToLocalStorage } from '../Helpers/LocalStorage';
 
 
@@ -30,6 +30,19 @@ function LoginBar(props) {
   });
 
   const [
+    logOutUser,
+    { loading: checkLogOutLoading, error: checkLogOutError },
+  ] = useLazyQuery(LOGOUT_USER, {
+    variables: { email: getFromLocalStorage('filmShelfSessionKey') ? getFromLocalStorage('filmShelfSessionKey')['email'] : '', sessionKey: getFromLocalStorage('filmShelfSessionKey')? getFromLocalStorage('filmShelfSessionKey')['sessionKey'] : '' },
+    onCompleted: () => {
+      localStorage.removeItem('filmShelfSessionKey');
+      checkLoginStatus();
+      window.location.reload();
+
+    },
+  });
+
+  const [
     createUser,
     { loading: checkCreateLoading, error: checkCreateError, data: createData },
   ] = useMutation(CREATE_USER, {
@@ -52,10 +65,13 @@ function LoginBar(props) {
     const sessionVariable = getFromLocalStorage('filmShelfSessionKey')
     if (sessionVariable) { 
       setSessionKeyState({sessionKeyVar: sessionVariable['sessionKey'], isLoggedInState: true })
-      return (
-        sessionVariable
-      )
      }
+     else {
+       setSessionKeyState({sessionKeyVar: '', isLoggedInState: false})
+     }
+     return (
+      sessionVariable
+    )
   }
 
   const status = sessionKeyState['isLoggedInState']
@@ -69,7 +85,7 @@ function LoginBar(props) {
     sessionKey ? setSessionKeyState({sessionKeyVar: sessionKey, isLoggedInState: true}) : setSessionKeyState({sessionKeyVar: '', isLoggedInState: false});
   }, [status]);
 
-  if (checkUserLoading || checkLogLoading || checkCreateLoading)
+  if (checkUserLoading || checkLogLoading || checkCreateLoading || checkLogOutLoading)
     return (
       <div>
         <p>Loading ...</p>
@@ -78,6 +94,7 @@ function LoginBar(props) {
   if (checkUserError) return `Error! ${checkUserError}`;
   if (checkLogError) return `Error! ${checkLogError}`;
   if (checkCreateError) return `Error! ${checkCreateError}`;
+  if (checkLogOutError) return `Error! ${checkLogOutError}`;
 
   if (
     userData &&
@@ -146,7 +163,10 @@ function LoginBar(props) {
         <h2 className="text-center font-serif font-extrabold text-xl">
           Welcome {email}
         </h2>
-        <button className="bg-red-500 border-2 rounded-lg py-3 mt-2 mx-2 px-6 font-bold text-white">
+        <button 
+        className="bg-red-500 border-2 rounded-lg py-3 mt-2 mx-2 px-6 font-bold text-white"
+        onClick={logOutUser}
+        >
           Log Out
         </button>
       </div>
@@ -181,7 +201,7 @@ function LoginBar(props) {
         >
           Submit
         </button>
-        <button className="bg-red-500 border-2 rounded-lg py-3 mt-2 mx-2 px-6 font-bold text-white">
+        <button className={`bg-red-500 border-2 rounded-lg py-3 mt-2 mx-2 px-6 font-bold text-white ${sessionKeyState.isLoggedInState ? "" : "hidden"}`}>
           Log Out
         </button>
       </div>

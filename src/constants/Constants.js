@@ -24,6 +24,20 @@ query login($email: String!, $password: String!) {
 }
 `;
 
+export const LOGOUT_USER = gql`
+query log_out($email: String!, $sessionKey: String!) {
+  logOut(email: $email, sessionKey: $sessionKey) {
+    _id
+    isLoggedIn
+    sessionKeys
+    password
+    createdAt
+    updatedAt
+    email
+  }
+}
+`;
+
 export const CREATE_USER = gql`
 mutation createUser($email: String!, $password: String!) {
   createUser(input: { email: $email, password: $password }) {
