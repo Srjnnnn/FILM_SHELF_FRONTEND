@@ -1,6 +1,6 @@
 # FILM_SHELF_FRONTEND
 
-This is a test project that uses [IMDB data](https://datasets.imdbws.com/) with the [React](https://tr.reactjs.org/), [Apollo Graphql](https://www.apollographql.com/) for frontend part. You can search with at least 4 characters (case-sensitive) and at least 3 character (case-sensitive) for movies and the casts respectively. You can also sign-up and add some movies, genres or the casts to your favorites. To do that you need to sign-in otherwise all you can is just searching. The project uses [MongoDB](https://www.mongodb.com/) database and you can reach the Backend API from [here](https://github.com/eypsrcnuygr/film_shelf). For styles I used 'Tailwind'.
+This is a test project that uses [IMDB data](https://datasets.imdbws.com/) with the [React](https://tr.reactjs.org/), [Apollo Graphql](https://www.apollographql.com/) for frontend part. You can search with at least 4 characters (case-sensitive) and at least 3 character (case-sensitive) for movies and the casts respectively. You can also sign-up and add some movies, genres or the casts to your favorites. To do that you need to sign-in otherwise all you can do is just searching. The project uses [MongoDB](https://www.mongodb.com/) database and you can reach the Backend API from [here](https://github.com/eypsrcnuygr/film_shelf). For the styles I used [Tailwind](https://tailwindcss.com/).
 
 ![screenshot](./public/book_shelf_screenshot.png)<br>
 
