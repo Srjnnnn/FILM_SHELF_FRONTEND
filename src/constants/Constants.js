@@ -101,6 +101,23 @@ export const GET_MOVIES = gql`
   }
 `;
 
+export const GET_MOVIE = gql`
+  query title($tconst: [String!]!) {
+    title(tconst: $tconst) {
+      originalTitle
+      _id
+      tconst
+      primaryTitle
+      titleType
+      isAdult
+      startYear
+      endYear
+      runtimeMinutes
+      genres
+    }
+  }
+`;
+
 export const FEATURED_MOVIES = gql`
   query featuredMovies {
     featuredMovies {

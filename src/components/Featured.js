@@ -18,6 +18,7 @@ export const Featured = (data) => {
         interval={2000}
         emulateTouch={true}
         infiniteLoop={true}
+        showThumbs={false}
       >
         {dataArray.map((movie) => {
           i++;
