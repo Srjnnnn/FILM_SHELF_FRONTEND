@@ -3,7 +3,7 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { GET_USER, UPDATE_USER, GET_MOVIE } from "../constants/Constants";
 import { getFromLocalStorage } from "../Helpers/LocalStorage";
 import { Loading } from "../components/Loading";
-import SearchBar from "../containers/SearchBar";
+import SearchBar from "../components/SearchBar";
 import { UpdateComponent } from "../components/UpdateComponent";
 
 function UserDetails() {

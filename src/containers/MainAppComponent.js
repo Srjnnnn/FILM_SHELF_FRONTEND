@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Movies from "../containers/Movies";
-import SearchBar from "../containers/SearchBar";
-import Names from "../containers/Names";
-import LoginBar from "../containers/LoginBar";
-import FeaturedMovies from '../containers/FeaturedMovies';
+import Movies from "./Movies";
+import SearchBar from "../components/SearchBar";
+import Names from "./Names";
+import LoginBar from "./LoginBar";
+import FeaturedMovies from './FeaturedMovies';
 
 export const MainAppComponent = (props) => {
   const [searchMovieResult, setSearchMovieResult] = useState("");
