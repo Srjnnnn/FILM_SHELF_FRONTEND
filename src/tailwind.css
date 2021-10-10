@@ -32243,8 +32243,17 @@ video {
   content: none;
 }
 
-h1 {
-  text-shadow: 5px, 5px, 5px, 0;
+.App > h1 {
+  text-shadow: 0 0 3px #FF0000;
+}
+
+.custom {
+  text-shadow: 2px 2px 4px #000000;
+}
+
+button:hover {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
 }
 
 @media (min-width: 640px) {

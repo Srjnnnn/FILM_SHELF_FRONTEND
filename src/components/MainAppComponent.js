@@ -3,6 +3,7 @@ import Movies from "../containers/Movies";
 import SearchBar from "../containers/SearchBar";
 import Names from "../containers/Names";
 import LoginBar from "../containers/LoginBar";
+import FeaturedMovies from '../containers/FeaturedMovies';
 
 export const MainAppComponent = (props) => {
   const [searchMovieResult, setSearchMovieResult] = useState("");
@@ -23,7 +24,7 @@ export const MainAppComponent = (props) => {
 };
 
   return (
-    <div className="box-border text-center">
+    <div className="App box-border text-center">
       <h1 className="text-center font-serif font-extrabold text-3xl pt-4">
         Welcome to Film Shelf
       </h1>
@@ -36,6 +37,10 @@ export const MainAppComponent = (props) => {
           callBackFromParent={myCallback}
         />
       </div>
+      <div><FeaturedMovies /></div>
+      <h2 className="text-center font-serif font-extrabold text-2xl pt-4 custom">
+        Seach for Movies or Actors
+      </h2>
       <div className="grid grid-cols-2 mt-14 py-6 shadow-2xl bg-blue-50 mx-auto border-2 rounded-lg w-4/5">
         <SearchBar
           placeholder="Search for movies"
@@ -45,7 +50,7 @@ export const MainAppComponent = (props) => {
           isLoggedIn={isLoggedIn}
         />
         <SearchBar
-          placeholder="Search for names"
+          placeholder="Search for actors"
           result={searchNameResult}
           searchChange={(e) => handleChange(e, "name")}
           name="name"
