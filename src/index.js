@@ -4,17 +4,17 @@ import './tailwind.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import './index.css';
+// import './index.css';
 
 
 
 const link = createHttpLink({
-  uri: 'http://localhost:3000/graphql'
+  uri: 'http://localhost:3000/graphql',
 })
 
 const client = new ApolloClient({
   link: link,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 })
 
 ReactDOM.render(

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { MainAppComponent } from "./components/MainAppComponent";
+import { MainAppComponent } from "./containers/MainAppComponent";
 import UserDetails from "./containers/UserDetailsPage";
 
 function App() {
