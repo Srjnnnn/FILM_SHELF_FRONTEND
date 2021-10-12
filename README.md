@@ -57,6 +57,7 @@ To get this project up and running locally, you must have node installed on your
 - I didn't crawl from IMDB for two reasons. First I wanted to try MongoDB.Secondly, web scraping could be tedious, it can cause so many errors, or even the site could be blocked for this operation and for every search term couple of HTTP requests and the document parsing and sending this to the frontend as I said made me to think about database options plus IMDB API is limited and I've found the data I gave above. 
 - I didn't do any frontend tests yet, hope in the future.
 - The user page caches the results in the memory, any client side routing doesn't clear the cache. That was my intention however, if you do change some preferences in the main page for the user (adding some favorites) and return back, to see the applied changes you need to refresh the page. This is something should be thought and then implement the best procedure.
+- I show Users selected movies as IDs but I've already added a GraphQL endpoint to get the movie names from the IDs. However, after adding some more movies to favorites the page slows down and I changed this behaviour in favor of performance. Another DB structure and sharding, more CPUs for sending data could solve this issue. If you see some commented out codes inside the repo, these are the cancelled communication residuals with the backend, left there intentionally. 
 
 ## 🤝 Contributing
 

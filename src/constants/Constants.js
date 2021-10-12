@@ -13,6 +13,7 @@ query user($email: String!) {
     favoriteActors
     favoriteMovies
     followedGenres
+    userSuggestions
   }
 }
 `;
