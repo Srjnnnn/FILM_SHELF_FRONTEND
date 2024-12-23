@@ -46,11 +46,6 @@ To get this project up and running locally, you must have node installed on your
 
 👤 **Eyüp Sercan UYGUR**
 
--   Github: [@eypsrcnuygr](https://github.com/eypsrcnuygr)
--   Twitter: [@eypsrcnuygr](https://twitter.com/eypsrcnuygr)
--   LinkedIn: [eypsrcnuygr](https://www.linkedin.com/in/eypsrcnuygr/)
--   Email: [Eyüp Sercan UYGUR](sercanuygur@gmail.com)
-
 ## 🤝 Further Words and Future Improvements
 
 - I think a pagination and partial rendering could be nice. I'll work on it. It needs some database manipulation as well.
